@@ -1,19 +1,21 @@
-import { Text, View } from 'react-native';
+import { Text, ScrollView } from 'react-native';
 
 export default function App() {
   return (
-    <View>
+    <ScrollView>
       <Text
-        style={{ marginTop: 300, fontSize: 32 }}
-        //selectable // -> Selecionável booleano para permitir que o texto seja selecionado
-        //selectionColor="rgba(255,0,0,0.5)" // -> Cor da seleção do texto // * Android only
-        numberOfLines={1}
-        ellipsizeMode="tail" // -> Define como o texto é truncado quando ultrapassa o número de linhas definido, não funciona se ativar o selectable, pois o texto precisa ser selecionável para ser truncado
-        allowFontScaling={true} // -> Permite ou não que o texto seja redimensionado de acordo com as configurações de acessibilidade do dispositivo
-        maxFontSizeMultiplier={1.5}
+        style={{marginTop: 300, fontSize:32, width:1000}}
       >
-        JStack - O melhor curso de React e JavaScript e a parada toda
+        Oi tudo bem
       </Text>
-    </View>
+
+      <ScrollView horizontal>
+        <Text
+          style={{fontSize:32, width:1000}}
+        >
+          JStack - O melhor curso de React e JavaScript e a parada toda
+        </Text>
+      </ScrollView>
+    </ScrollView>
   );
 }
