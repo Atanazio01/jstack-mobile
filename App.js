@@ -8,7 +8,7 @@ export default function App() {
         //selectable // -> Selecionável booleano para permitir que o texto seja selecionado
         //selectionColor="rgba(255,0,0,0.5)" // -> Cor da seleção do texto // * Android only
         numberOfLines={1}
-        ellipsizeMode="tail" // -> Define como o texto é truncado quando ultrapassa o número de linhas definido
+        ellipsizeMode="tail" // -> Define como o texto é truncado quando ultrapassa o número de linhas definido, não funciona se ativar o selectable, pois o texto precisa ser selecionável para ser truncado
         allowFontScaling={true} // -> Permite ou não que o texto seja redimensionado de acordo com as configurações de acessibilidade do dispositivo
         maxFontSizeMultiplier={1.5}
       >
