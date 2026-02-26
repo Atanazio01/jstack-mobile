@@ -6,9 +6,10 @@ export default function App() {
       <Text style={{
         marginTop: 300,
         fontSize: 32,
-        fontWeight: 'bold'
       }}>
-        Hello JStack!
+        Oi JStack!!!!
+
+        <Text style={{ fontWeight: 'bold' }}>Tudo bem?</Text>
       </Text>
     </View>
   );
