@@ -9,6 +9,8 @@ export default function App() {
         //selectionColor="rgba(255,0,0,0.5)" // -> Cor da seleção do texto // * Android only
         numberOfLines={1}
         ellipsizeMode="tail" // -> Define como o texto é truncado quando ultrapassa o número de linhas definido
+        allowFontScaling={true} // -> Permite ou não que o texto seja redimensionado de acordo com as configurações de acessibilidade do dispositivo
+        maxFontSizeMultiplier={1.5}
       >
         JStack - O melhor curso de React e JavaScript e a parada toda
       </Text>
