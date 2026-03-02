@@ -1,6 +1,6 @@
-import { Platform, StatusBar } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-export const styles = {
+export const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
   },
@@ -11,4 +11,4 @@ export const styles = {
   buttonsContainer: {
     gap: 16,
   }
-}
+});
