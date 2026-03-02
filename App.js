@@ -1,4 +1,4 @@
-import { Platform, ScrollView, StatusBar } from 'react-native';
+import { Platform, ScrollView, StatusBar, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 import { Button } from './src/Button';
@@ -18,10 +18,12 @@ export default function App() {
             translucent={true} // Android: Setting to false ensures StatusBar does not overlay content, providing consistent layout across platforms. On iOS, this prop has no effect as StatusBar is non-translucent by default.
           />
 
-          <Button />
-          <Button />
-          <Button />
-          <Button />
+          <View style={{ gap: 16 }}> 
+            <Button />
+            <Button />
+            <Button />
+            <Button />
+          </View>
         </ScrollView>
       </SafeAreaView>
     </SafeAreaProvider>
