@@ -5,8 +5,9 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   container: {
-    backgroundColor: '#222',
-    height: '100%',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    flex: 1,
   },
   buttonsContainer: {
     gap: 16,

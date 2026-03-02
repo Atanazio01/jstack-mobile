@@ -1,7 +1,6 @@
-import { Platform, ScrollView, StatusBar, View } from 'react-native';
+import { Platform, ScrollView, StatusBar, View, Button } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
-import { Button } from '../Button';
 import { styles } from './styles';
 
 console.log(Platform.OS, StatusBar.currentHeight); // Android: Logs the height of the status bar. iOS: Logs undefined, as StatusBar height is not directly accessible.
@@ -11,19 +10,14 @@ export default function App() {
     <SafeAreaProvider>
       <SafeAreaView style={styles.wrapper} edges={['top', 'bottom']}>
         <ScrollView style={styles.container}>
-          <StatusBar
-            hidden={false} //is supported on both iOS and Android, but behavior may vary. iOS hides StatusBar completely, Android may not support full hiding on all versions. Test on both platforms.
-            backgroundColor="#f00" //// Android: backgroundColormay be ignored on newer versions (Android 15+/API 35). Use native theming instead.
-            barStyle="dark-content" // Supported on both platforms, but may not work on all Android versions. On iOS, it changes the text/icons to light color. On Android, behavior can be inconsistent across versions.
-            animated={false} // Disable animation on Android to avoid inconsistent color transition behavior on newer versions.
-            translucent={true} // Android: Setting to false ensures StatusBar does not overlay content, providing consistent layout across platforms. On iOS, this prop has no effect as StatusBar is non-translucent by default.
-          />
-
           <View style={styles.buttonsContainer}>
-            <Button />
-            <Button />
-            <Button />
-            <Button />
+            <Button
+              title='Meu Button'
+              color="#f00"
+              onPress={() => alert('Button pressionado')}
+              disabled={false} // Enables the button so it can be pressed.
+              touchSoundDisabled // Disables click sound when pressing the button, Android only, since iOS has no click sound by default.
+            />
           </View>
         </ScrollView>
       </SafeAreaView>

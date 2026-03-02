@@ -4,7 +4,7 @@ export function Button() {
     return (
       <View
         style={{
-          width: 200,
+          width: '100%',
           height: 48,
           backgroundColor: 'green',
         }}
