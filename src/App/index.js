@@ -1,4 +1,12 @@
-import { Platform, ScrollView, StatusBar, View, Button } from 'react-native';
+import {
+  Platform,
+  ScrollView,
+  StatusBar,
+  View,
+  Button,
+  TouchableOpacity,
+  Text,
+} from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 import { styles } from './styles';
@@ -12,15 +20,21 @@ export default function App() {
         <ScrollView style={styles.container}>
           <View style={styles.buttonsContainer}>
             <Button
-              title='Meu Button'
-              color="#f00"
+              title='Button'
+              color="#000"
               onPress={() => alert('Button pressionado')}
-              disabled={false} // Enables the button so it can be pressed.
-              touchSoundDisabled // Disables click sound when pressing the button, Android only, since iOS has no click sound by default.
             />
+
+            <TouchableOpacity
+              activeOpacity={0.1}
+              onPress={() => alert('TouchableOpacity pressionado')}
+              style={styles.button}
+            >
+              <Text style={styles.buttonLabel}>TouchableOpacity</Text>
+            </TouchableOpacity>
           </View>
         </ScrollView>
       </SafeAreaView>
-    </SafeAreaProvider>
+    </SafeAreaProvider >
   );
 }
