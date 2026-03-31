@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   TouchableHighlight,
   TouchableWithoutFeedback,
+  TouchableNativeFeedback
 } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
@@ -23,7 +24,7 @@ export default function App() {
           <View style={styles.buttonsContainer}>
             <Button
               title='Button'
-              color="#000"
+              color="#f00"
               onPress={() => alert('Button pressionado')}
             />
 
@@ -45,12 +46,22 @@ export default function App() {
             </TouchableHighlight>
             <TouchableWithoutFeedback
               onPress={() => alert('TouchableWithoutFeedback pressionado')}
-              // O TouchableWithoutFeedback não tem feedback visual, ele não possui a propriedade styles, mas podemos utilizar um View como filho para aplicar estilos e criar um feedback visual personalizado, como mudar a cor de fundo ou adicionar uma animação. Uma dica do Mateus Silva é evitar de usar o TouchableWithoutFeedback, pois ele não tem feedback visual, o que pode ser confuso para os usuários, e é melhor usar o TouchableOpacity ou TouchableHighlight para fornecer um feedback visual claro. Assim como o TouchableHighlight, o TouchableWithoutFeedback também não permite múltiplos filhos diretos.
+            // O TouchableWithoutFeedback não tem feedback visual, ele não possui a propriedade styles, mas podemos utilizar um View como filho para aplicar estilos e criar um feedback visual personalizado, como mudar a cor de fundo ou adicionar uma animação. Uma dica do Mateus Silva é evitar de usar o TouchableWithoutFeedback, pois ele não tem feedback visual, o que pode ser confuso para os usuários, e é melhor usar o TouchableOpacity ou TouchableHighlight para fornecer um feedback visual claro. Assim como o TouchableHighlight, o TouchableWithoutFeedback também não permite múltiplos filhos diretos.
             >
               <View style={styles.button}>
                 <Text style={styles.buttonLabel}>TouchableWithoutFeedback</Text>
               </View>
             </TouchableWithoutFeedback>
+            <View style={styles.androidButtonContainer}>
+              <TouchableNativeFeedback
+                onPress={() => alert('TouchableNativeFeedback pressionado')}
+                background={TouchableNativeFeedback.Ripple("#f00")} // para aplicar o feedback visual nativo do Android, como o ripple effect. O TouchableNativeFeedback é específico para Android e não funciona no iOS, então é importante verificar a plataforma antes de usá-lo para evitar erros.
+              >
+                <View style={styles.button}>
+                  <Text style={styles.buttonLabel}>TouchableNativeFeedback</Text>
+                </View>
+              </TouchableNativeFeedback>
+            </View>
           </View>
         </ScrollView>
       </SafeAreaView>

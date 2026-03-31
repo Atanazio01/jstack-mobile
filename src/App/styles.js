@@ -22,5 +22,9 @@ export const styles = StyleSheet.create({
   buttonLabel: {
     color: '#fff',
     fontWeight: 'bold',
-  }
+  },
+  androidButtonContainer: {
+    borderRadius: 8,
+    overflow: 'hidden',
+  },
 });
