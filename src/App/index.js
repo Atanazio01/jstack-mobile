@@ -9,6 +9,7 @@ import {
   TouchableHighlight,
   TouchableWithoutFeedback,
   TouchableNativeFeedback,
+  Pressable,
 } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
@@ -74,13 +75,25 @@ export default function App() {
                 </View>
               </TouchableNativeFeedback>
             </View>
-            <TouchableOpacity
-              onPress={() => alert("Ver mais")}
-              style={{ backgroundColor: "red", alignSelf: "flex-start" }}
-              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }} // para aumentar a área de pressão do TouchableOpacity, evitando que o usuário precise pressionar exatamente no botão para acionar o evento de pressão.
+
+            <Pressable
+              style={({ pressed }) => [
+                styles.button,
+                pressed && {
+                  transform: "scale(0.9)",
+                },
+              ]}
+              onPress={() => console.log("Pressable pressionado")}
+              android_ripple={{ color: "#f00" }} // para aplicar o feedback visual nativo do Android, como o ripple effect. O Pressable é específico para Android e não funciona no iOS, então é importante verificar a plataforma antes de usá-lo para evitar erros.
+              android_disableSound={true} // para desativar o som do feedback visual nativo do Android.
+              
             >
-              <Text>Ver mais</Text>
-            </TouchableOpacity>
+              {({ pressed }) => (
+                <Text style={[styles.buttonLabel, pressed && { opacity: 0.5 }]}>
+                  Pressable
+                </Text>
+              )}
+            </Pressable>
           </View>
         </ScrollView>
       </SafeAreaView>
