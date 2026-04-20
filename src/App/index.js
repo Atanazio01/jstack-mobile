@@ -73,6 +73,13 @@ export default function App() {
                 </View>
               </TouchableNativeFeedback>
             </View>
+            <TouchableOpacity
+              onPress={() => alert("Ver mais")}
+              style={{ backgroundColor: "red", alignSelf: "flex-start" }}
+              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }} // para aumentar a área de pressão do TouchableOpacity, evitando que o usuário precise pressionar exatamente no botão para acionar o evento de pressão.
+            >
+              <Text>Ver mais</Text>
+            </TouchableOpacity>
           </View>
         </ScrollView>
       </SafeAreaView>
