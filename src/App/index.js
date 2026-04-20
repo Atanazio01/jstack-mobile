@@ -17,7 +17,7 @@ import { styles } from "./styles";
 console.log(Platform.OS, StatusBar.currentHeight); // Android: Logs the height of the status bar. iOS: Logs undefined, as StatusBar height is not directly accessible.
 
 export default function App() {
-  const disabled = true;
+  const disabled = false;
 
   return (
     <SafeAreaProvider>
@@ -35,8 +35,9 @@ export default function App() {
               activeOpacity={0.1}
               style={[styles.button, disabled && styles.buttonDisabled]}
               disabled={disabled}
+              pressRetentionOffset={16} // 16 pixels de margem de segurança para aumentar a área de pressão do TouchableOpacity, evitando que o usuário precise pressionar exatamente no botão para acionar o evento de pressão.
               //
-              onPress={() => console.log("onPress")}
+              onPress={() => alert("Pressionou")}
               onPressIn={() => console.log("onPressIn")}
               onPressOut={() => console.log("onPressOut")}
               onLongPress={() => console.log("onLongPress")}
