@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   wrapper: {
@@ -13,18 +13,21 @@ export const styles = StyleSheet.create({
     gap: 16,
   },
   button: {
-    backgroundColor: '#000',
+    backgroundColor: "#000",
     height: 48,
     borderRadius: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   buttonLabel: {
-    color: '#fff',
-    fontWeight: 'bold',
+    color: "#fff",
+    fontWeight: "bold",
   },
   androidButtonContainer: {
     borderRadius: 8,
-    overflow: 'hidden',
+    overflow: "hidden",
+  },
+  buttonDisabled: {
+    backgroundColor: "#ccc",
   },
 });

@@ -17,6 +17,8 @@ import { styles } from "./styles";
 console.log(Platform.OS, StatusBar.currentHeight); // Android: Logs the height of the status bar. iOS: Logs undefined, as StatusBar height is not directly accessible.
 
 export default function App() {
+  const disabled = true;
+
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.wrapper} edges={["top", "bottom"]}>
@@ -26,16 +28,19 @@ export default function App() {
               title="Button"
               color="#f00"
               onPress={() => alert("Button pressionado")}
+              disabled
             />
 
             <TouchableOpacity
               activeOpacity={0.1}
+              style={[styles.button, disabled && styles.buttonDisabled]}
+              disabled={disabled}
+              //
               onPress={() => console.log("onPress")}
               onPressIn={() => console.log("onPressIn")}
               onPressOut={() => console.log("onPressOut")}
               onLongPress={() => console.log("onLongPress")}
               delayLongPress={3000} // 3 segundos
-              style={styles.button}
             >
               <Text style={styles.buttonLabel}>TouchableOpacity</Text>
             </TouchableOpacity>
