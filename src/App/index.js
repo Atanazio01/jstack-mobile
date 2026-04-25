@@ -17,6 +17,14 @@ export default function App() {
             style={styles.input}
             placeholder="E-mail"
             placeholderTextColor="#aaa"
+            editable // inicia em true
+            //readOnly //tem o mesmo funcionamento do editable
+            //textAlign="center" // também podemos alinhas via css
+            //maxLength={9}
+            //caretHidden={false} // esconde o cursor que fica piscando ao focar no input
+            //cursorColor="#f00" // Android only
+            //selectionColor="f00" // funciona no Android e IOS
+            autoFocus // Faz com que já entre na tela com foco nesse elemento
           />
           <TextInput
             style={styles.input}
