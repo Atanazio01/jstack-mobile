@@ -9,25 +9,4 @@ export const styles = StyleSheet.create({
     paddingVertical: 10,
     flex: 1,
   },
-  buttonsContainer: {
-    gap: 16,
-  },
-  button: {
-    backgroundColor: "#000",
-    height: 48,
-    borderRadius: 8,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  buttonLabel: {
-    color: "#fff",
-    fontWeight: "bold",
-  },
-  androidButtonContainer: {
-    borderRadius: 8,
-    overflow: "hidden",
-  },
-  buttonDisabled: {
-    backgroundColor: "#ccc",
-  },
 });
