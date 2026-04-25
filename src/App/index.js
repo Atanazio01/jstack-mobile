@@ -1,4 +1,4 @@
-import { Platform, ScrollView, StatusBar } from "react-native";
+import { Platform, StatusBar, TextInput, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 import { styles } from "./styles";
@@ -12,9 +12,20 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.wrapper} edges={["top", "bottom"]}>
-        <ScrollView style={styles.container}>
+        <View style={styles.container}>
+          <TextInput
+            style={styles.input}
+            placeholder="E-mail"
+            placeholderTextColor="#aaa"
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Senha"
+            placeholderTextColor="#aaa"
+            secureTextEntry
+          />
           <Button disabled={disabled}>Oi Botão</Button>
-        </ScrollView>
+        </View>
       </SafeAreaView>
     </SafeAreaProvider>
   );
