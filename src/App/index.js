@@ -14,8 +14,18 @@ export default function App() {
     <SafeAreaProvider>
       <SafeAreaView style={styles.wrapper}>
         <View style={styles.container}>
-          <Input placeholder="E-mail" />
-          <Input placeholder="Senha" secureTextEntry />
+          <Input
+            placeholder="E-mail"
+            keyboardType="email-address"
+            autoCapitalize="none"
+            autoCorrect={false}
+            autoComplete="email"
+          />
+          <Input
+            placeholder="Senha"
+            secureTextEntry
+            keyboardType="number-pad"
+          />
           <Button disabled={disabled}>Oi Botão</Button>
         </View>
       </SafeAreaView>
