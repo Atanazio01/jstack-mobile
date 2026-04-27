@@ -1,5 +1,6 @@
 import { TextInput } from "react-native";
 import { styles } from "./styles";
+import { useState } from "react";
 
 /**
  *
