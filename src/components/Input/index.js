@@ -1,6 +1,10 @@
 import { TextInput } from "react-native";
 import { styles } from "./styles";
-import { useState } from "react";
+
+/**
+ *
+ * @param {import('react-native').TextInputProps} props
+ */
 
 export function Input(props) {
   const [isFocused, setIsFocused] = useState(false);
