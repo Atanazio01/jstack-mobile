@@ -4,13 +4,20 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "./styles";
 import { Button } from "../components/Button";
 import { Input } from "../components/Input";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 console.log(Platform.OS, StatusBar.currentHeight); // Android: Logs the height of the status bar. iOS: Logs undefined, as StatusBar height is not directly accessible.
 
 export default function App() {
   const passwordInputRef = useRef();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const disabled = false;
+
+  function handleSubmit() {
+    console.log({ email, password });
+  }
 
   return (
     <SafeAreaProvider>
@@ -26,6 +33,8 @@ export default function App() {
             submitBehavior="blurAndSubmit"
             returnKeyType="next"
             enablesReturnKeyAutomatically //* IOS Only
+            value={email}
+            onChangeText={setEmail}
           />
           <Input
             ref={passwordInputRef}
@@ -33,9 +42,13 @@ export default function App() {
             secureTextEntry
             keyboardType="number-pad"
             returnKeyType="done"
-            onSubmitEditing={() => console.log("Enviar")}
+            onSubmitEditing={handleSubmit}
+            value={password}
+            onChangeText={setPassword}
           />
-          <Button disabled={disabled}>Enviar</Button>
+          <Button disabled={disabled} onPress={handleSubmit}>
+            Enviar
+          </Button>
         </View>
       </SafeAreaView>
     </SafeAreaProvider>
