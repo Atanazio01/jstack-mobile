@@ -9,7 +9,6 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   contentContainer: {
-    alignItems: "flex-start",
     gap: 16,
   },
   postContainer: {
