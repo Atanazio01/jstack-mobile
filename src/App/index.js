@@ -1,78 +1,27 @@
-import {
-  Platform,
-  StatusBar,
-  View,
-  Switch,
-  KeyboardAvoidingView,
-} from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 import { styles } from "./styles";
-import { Button } from "../components/Button";
-import { Input } from "../components/Input";
-import { useRef, useState } from "react";
-import { TextArea } from "../components/TextArea";
 
-console.log(Platform.OS, StatusBar.currentHeight); // Android: Logs the height of the status bar. iOS: Logs undefined, as StatusBar height is not directly accessible.
+const posts = Array.from({ length: 30 }, (_, index) => ({
+  id: index,
+  title: `Post #${index + 1}`,
+}));
 
 export default function App() {
-  const passwordInputRef = useRef();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [selected, setSelected] = useState(false);
-
-  const disabled = false;
-
-  function handleSubmit() {
-    console.log({ email, password });
-  }
-
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.wrapper}>
-        <KeyboardAvoidingView
+        <ScrollView
           style={styles.container}
-          behavior={Platform.OS === "ios" ? "padding" : "height"}
-          
+          contentContainerStyle={styles.contentContainer}
         >
-          <Switch
-            style={{ marginRight: "auto" }}
-            value={selected}
-            onValueChange={setSelected}
-            disabled={false}
-            thumbColor="purple"
-            ios_backgroundColor="yellow" // IOS Only
-            trackColor={{ true: "#0fa0f8", false: "yellow" }}
-          />
-          <TextArea placeholder="Descrição..." />
-
-          <Input
-            placeholder="E-mail"
-            keyboardType="email-address"
-            autoCapitalize="none"
-            autoCorrect={false}
-            autoComplete="email"
-            onSubmitEditing={() => passwordInputRef.current.focus()}
-            submitBehavior="blurAndSubmit"
-            returnKeyType="next"
-            enablesReturnKeyAutomatically //* IOS Only
-            value={email}
-            onChangeText={setEmail}
-          />
-          <Input
-            ref={passwordInputRef}
-            placeholder="Senha"
-            secureTextEntry
-            keyboardType="number-pad"
-            returnKeyType="done"
-            onSubmitEditing={handleSubmit}
-            value={password}
-            onChangeText={setPassword}
-          />
-          <Button disabled={disabled} onPress={handleSubmit}>
-            Enviar
-          </Button>
-        </KeyboardAvoidingView>
+          {posts.map((post) => (
+            <View key={post.id} style={styles.postContainer}>
+              <Text style={styles.postTitle}>{post.title}</Text>
+            </View>
+          ))}
+        </ScrollView>
       </SafeAreaView>
     </SafeAreaProvider>
   );
