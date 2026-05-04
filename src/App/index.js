@@ -1,4 +1,10 @@
-import { Platform, StatusBar, View, Switch } from "react-native";
+import {
+  Platform,
+  StatusBar,
+  View,
+  Switch,
+  KeyboardAvoidingView,
+} from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 import { styles } from "./styles";
@@ -24,7 +30,11 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.wrapper}>
-        <View style={styles.container}>
+        <KeyboardAvoidingView
+          style={styles.container}
+          behavior={Platform.OS === "ios" ? "padding" : "height"}
+          
+        >
           <Switch
             style={{ marginRight: "auto" }}
             value={selected}
@@ -62,7 +72,7 @@ export default function App() {
           <Button disabled={disabled} onPress={handleSubmit}>
             Enviar
           </Button>
-        </View>
+        </KeyboardAvoidingView>
       </SafeAreaView>
     </SafeAreaProvider>
   );
