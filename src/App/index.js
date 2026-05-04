@@ -4,7 +4,7 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "./styles";
 import { useEffect } from 'react';
 
-const posts = Array.from({ length: 10000 }, (_, index) => ({
+const posts = Array.from({ length: 1000 }, (_, index) => ({
   id: index,
   title: `Post #${index + 1}`,
 }));
@@ -28,10 +28,6 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.wrapper}>
-        {/* <ScrollView
-          style={styles.container}
-          contentContainerStyle={styles.contentContainer}
-        > */}
           <FlatList
             style={styles.container}
             contentContainerStyle={styles.contentContainer}
@@ -40,13 +36,12 @@ export default function App() {
             renderItem={({ item: post }) => (
               <ListItem title={post.title} />
             )}
+            getItemLayout={(data, index) => ({
+              index, 
+              length: 64 + 16,
+              offset: (64 + 16) * index,
+            })}
           />
-          {/* {posts.map((post) => (
-            <View key={post.id} style={styles.postContainer}>
-              <Text style={styles.postTitle}>{post.title}</Text>
-            </View>
-          ))} */}
-        {/* </ScrollView> */}
       </SafeAreaView>
     </SafeAreaProvider>
   );
