@@ -1,8 +1,8 @@
-import { FlatList, Text, View } from "react-native";
+import { FlatList, RefreshControl, Text, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 import { styles } from "./styles";
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const posts = Array.from({ length: 100 }, (_, index) => ({
   id: index,
@@ -55,40 +55,52 @@ function Divider() {
 }
 
 export default function App() {
-  const [refreshing, setRefreshing] = useState(false);
-  const handleRefresh = () => {
-    setRefreshing(true);
-    new Promise((resolve) => {
-      setTimeout(() => {
-        resolve();
-        setRefreshing(false);
-      }, 2000);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
+  async function handleRefresh() {
+    setIsRefreshing(true);
+
+    await new Promise((resolve) => {
+      setTimeout(resolve, 2000);
     });
+
+    setIsRefreshing(false);
   }
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.wrapper}>
-          <FlatList
-            ListHeaderComponent={Header}
-            ListFooterComponent={Footer}
-            ListEmptyComponent={EmptyState}
-            ItemSeparatorComponent={Divider}
-            stickyHeaderIndices={[0]}
-            onRefresh={handleRefresh}
-            refreshing={refreshing}
-            style={styles.container}
-            //contentContainerStyle={styles.contentContainer}
-            data={posts}
-            keyExtractor={(post) => post.id}
-            renderItem={({ item: post }) => (
-              <ListItem title={post.title} />
-            )}
-            getItemLayout={(data, index) => ({
-              index, 
-              length: 64 + 16,
-              offset: (64 + 16) * index,
-            })}
-          />
+        <FlatList
+          refreshControl={
+            <RefreshControl
+              refreshing={isRefreshing}
+              onRefresh={handleRefresh}
+              // IOS
+              tintColor="#f00"
+              title="Carregando..."
+              titleColor="#f00"
+              // Android only
+              colors={["#f00", "#00f", "#f00"]}
+              progressBackgroundColor="#000"
+              size='large'
+            />
+          }
+
+          ListHeaderComponent={Header}
+          ListFooterComponent={Footer}
+          ListEmptyComponent={EmptyState}
+          ItemSeparatorComponent={Divider}
+          stickyHeaderIndices={[0]}
+          style={styles.container}
+          //contentContainerStyle={styles.contentContainer}
+          data={posts}
+          keyExtractor={(post) => post.id}
+          renderItem={({ item: post }) => <ListItem title={post.title} />}
+          getItemLayout={(data, index) => ({
+            index,
+            length: 64 + 16,
+            offset: (64 + 16) * index,
+          })}
+        />
       </SafeAreaView>
     </SafeAreaProvider>
   );
