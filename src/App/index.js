@@ -2,7 +2,7 @@ import { FlatList, Text, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 import { styles } from "./styles";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const posts = Array.from({ length: 100 }, (_, index) => ({
   id: index,
@@ -55,6 +55,16 @@ function Divider() {
 }
 
 export default function App() {
+  const [refreshing, setRefreshing] = useState(false);
+  const handleRefresh = () => {
+    setRefreshing(true);
+    new Promise((resolve) => {
+      setTimeout(() => {
+        resolve();
+        setRefreshing(false);
+      }, 2000);
+    });
+  }
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.wrapper}>
@@ -64,6 +74,8 @@ export default function App() {
             ListEmptyComponent={EmptyState}
             ItemSeparatorComponent={Divider}
             stickyHeaderIndices={[0]}
+            onRefresh={handleRefresh}
+            refreshing={refreshing}
             style={styles.container}
             //contentContainerStyle={styles.contentContainer}
             data={posts}
