@@ -5,9 +5,10 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#888",
     borderRadius: 8,
-    height: 72,
-    paddingHorizontal: 16,
     color: "#333",
+    paddingHorizontal: 16,
+    maxHeight: 144,
+    minHeight: 72,
   },
   textAreaFocused: {
     borderColor: "#222",
