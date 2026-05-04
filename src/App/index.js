@@ -4,7 +4,7 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "./styles";
 import { useEffect } from 'react';
 
-const posts = Array.from({ length: 5 }, (_, index) => ({
+const posts = Array.from({ length: 100 }, (_, index) => ({
   id: index,
   title: `Post #${index + 1}`,
 }));
@@ -63,6 +63,7 @@ export default function App() {
             ListFooterComponent={Footer}
             ListEmptyComponent={EmptyState}
             ItemSeparatorComponent={Divider}
+            stickyHeaderIndices={[0]}
             style={styles.container}
             //contentContainerStyle={styles.contentContainer}
             data={posts}
