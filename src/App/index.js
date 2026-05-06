@@ -4,6 +4,7 @@ import {
   Text,
   View,
   ActivityIndicator,
+  SectionList,
 } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
@@ -75,9 +76,7 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.wrapper}>
-        <FlatList
-          numColumns={3}
-          columnWrapperStyle={{ gap: 16 }}
+        <SectionList
           refreshControl={
             <RefreshControl
               refreshing={isRefreshing}
@@ -98,8 +97,37 @@ export default function App() {
           ItemSeparatorComponent={Divider}
           stickyHeaderIndices={[0]}
           style={styles.container}
-          //contentContainerStyle={styles.contentContainer}
-          data={posts}
+          contentContainerStyle={styles.contentContainer}
+          sections={[
+            {
+              title: "Section 1",
+              //key: "section1", // se não for passado, o key é o index da seção, ideal passar só se precisar ficar reordenando as seções
+              data: posts.slice(0, 10),
+              renderItem: ({ item: post }) => (
+                <View style={{ backgroundColor: "#f00" }}>
+                  <Text>{post.title}</Text>
+                </View>
+              ), // Pode usar renderItem e outros que já estejam na lista para sobrescrever em cada seção
+            },
+            {
+              title: "Section 2",
+              //key: "section2",
+              data: posts.slice(10, 20),
+            },
+            {
+              title: "Section 3",
+              //key: "section3",
+              data: posts.slice(20, 30),
+            },
+          ]}
+          renderSectionHeader={({ section: { title } }) => (
+            <View
+              style={{ backgroundColor: "#000", padding: 10, borderRadius: 8 }}
+            >
+              <Text style={{color: "#fff"}}>{title}</Text>
+            </View>
+          )}
+          //data={posts}
           keyExtractor={(post) => post.id}
           renderItem={({ item: post }) => <ListItem title={post.title} />}
           getItemLayout={(data, index) => ({
