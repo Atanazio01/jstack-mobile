@@ -1,4 +1,10 @@
-import { FlatList, RefreshControl, Text, View } from "react-native";
+import {
+  FlatList,
+  RefreshControl,
+  Text,
+  View,
+  ActivityIndicator,
+} from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 import { styles } from "./styles";
@@ -69,6 +75,14 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.wrapper}>
+        <ActivityIndicator
+          animating
+          hidesWhenStopped // IOS only
+          color="#f00"
+          size="large" // tamanho númerico só funciona em Android
+          style={{ marginTop: 20 }}
+        />
+
         <FlatList
           refreshControl={
             <RefreshControl
@@ -81,10 +95,9 @@ export default function App() {
               // Android only
               colors={["#f00", "#00f", "#f00"]}
               progressBackgroundColor="#000"
-              size='large'
+              size="large"
             />
           }
-
           ListHeaderComponent={Header}
           ListFooterComponent={Footer}
           ListEmptyComponent={EmptyState}
