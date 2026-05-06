@@ -75,15 +75,9 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.wrapper}>
-        <ActivityIndicator
-          animating
-          hidesWhenStopped // IOS only
-          color="#f00"
-          size="large" // tamanho númerico só funciona em Android
-          style={{ marginTop: 20 }}
-        />
-
         <FlatList
+          numColumns={3}
+          columnWrapperStyle={{ gap: 16 }}
           refreshControl={
             <RefreshControl
               refreshing={isRefreshing}
