@@ -16,9 +16,19 @@ export default function App() {
 
         <Modal
           visible={visible}
-          animationType="fade"
+          animationType="slide"
           statusBarTranslucent
-          transparent
+
+          // Page Sheet -> * IOS Only 
+          presentationStyle="pageSheet"
+          // Full Screen -> * IOS Only 
+          // presentationStyle="fullScreen"
+          // Form Sheet -> * IOS Only 
+          // presentationStyle="formSheet"
+          // Over Full Screen -> * IOS Only 
+          // presentationStyle="overFullScreen"
+          // Over Current Context -> * IOS Only 
+          // presentationStyle="overCurrentContext"
         >
           <StatusBar barStyle="light-content" animated />
           <View style={styles.modalOverlay}>
