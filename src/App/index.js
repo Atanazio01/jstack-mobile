@@ -21,14 +21,8 @@ export default function App() {
 
           // Page Sheet -> * IOS Only 
           presentationStyle="pageSheet"
-          // Full Screen -> * IOS Only 
-          // presentationStyle="fullScreen"
-          // Form Sheet -> * IOS Only 
-          // presentationStyle="formSheet"
-          // Over Full Screen -> * IOS Only 
-          // presentationStyle="overFullScreen"
-          // Over Current Context -> * IOS Only 
-          // presentationStyle="overCurrentContext"
+          onRequestClose={() => setVisible(false)}
+          
         >
           <StatusBar barStyle="light-content" animated />
           <View style={styles.modalOverlay}>

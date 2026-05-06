@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   modalOverlay: {
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    backgroundColor: 'rgba(255, 0, 0, 0.7)',
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
