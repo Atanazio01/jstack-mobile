@@ -35,12 +35,39 @@ export default function App() {
     );
   }
 
+  function handleShowPrompt() {
+    // IOS Only
+    Alert.prompt(
+      "Responda:",
+      "Qual o melhor curso da internet?",
+      [
+        {
+          text: 'Cancelar',
+          style: 'cancel',
+          onPress: (value) => console.log('Cancelado:', value ),
+        },
+        {
+          text: 'Enviar',
+          isPreferred: true,
+          onPress: (value) => console.log('Enviado:', value),
+        }
+      ],
+      'plain-text',
+      '',
+      '',
+      {
+        userInterfaceStyle: 'light',
+      }
+    );
+  }
+
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.wrapper}>
         <View style={styles.container}>
           <Button onPress={() => setVisible(true)}>Abrir Modal</Button>
           <Button onPress={handleShowAlert}>Mostrar Alerta</Button>
+          <Button onPress={handleShowPrompt}>Mostrar Prompt</Button>
         </View>
 
         <Modal
