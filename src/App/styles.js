@@ -23,10 +23,15 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
   },
-  modalContainer: {
-    backgroundColor: "#000",
+  modalOverlay: {
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+  },
+  modalContainer: {
+    backgroundColor: "#fff",
+    padding: 24,
+    borderRadius: 8,
   },
 });

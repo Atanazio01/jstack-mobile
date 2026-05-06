@@ -14,18 +14,25 @@ export default function App() {
           <Button onPress={() => setVisible(true)}>Abrir Modal</Button>
         </View>
 
-        <Modal visible={visible} animationType="fade" statusBarTranslucent>
+        <Modal
+          visible={visible}
+          animationType="fade"
+          statusBarTranslucent
+          transparent
+        >
           <StatusBar barStyle="light-content" animated />
-          <View style={styles.modalContainer}>
-            <Text style={{ marginBottom: 16, color: "white" }}>
-              Este é o conteúdo do meu modal!
-            </Text>
-            <Button
-              style={{ paddingHorizontal: 20 }}
-              onPress={() => setVisible(false)}
-            >
-              Fechar
-            </Button>
+          <View style={styles.modalOverlay}>
+            <View style={styles.modalContainer}>
+              <Text style={{ marginBottom: 16 }}>
+                Este é o conteúdo do meu modal!
+              </Text>
+              <Button
+                style={{ paddingHorizontal: 20 }}
+                onPress={() => setVisible(false)}
+              >
+                Fechar
+              </Button>
+            </View>
           </View>
         </Modal>
       </SafeAreaView>
