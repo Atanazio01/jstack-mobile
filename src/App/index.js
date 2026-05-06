@@ -1,4 +1,4 @@
-import { View, Modal, Text, StatusBar } from "react-native";
+import { View, Modal, Text, StatusBar, Alert } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { Button } from "../components/Button";
 import { styles } from "./styles";
@@ -7,22 +7,49 @@ import { useState } from "react";
 export default function App() {
   const [visible, setVisible] = useState(false);
 
+  function handleShowAlert() {
+    Alert.alert(
+      "Atenção!",
+      "Bloquear o usuário fará com que ele não possa acessar a aplicação.",
+      [
+        {
+          text: "Bloquear",
+          onPress: () => console.log("Bloquear usuário"),
+          isPreferred: true, // * IOS Only
+          style: "destructive", // * IOS Only
+        },
+        {
+          text: "Cancelar",
+          onPress: () => console.log("Cancelar"),
+        },
+        {
+          text: "Depois",
+          onPress: () => console.log("Depois"),
+        },
+      ],
+      {
+        cancelable: true, // Android Only
+        onDismiss: () => console.log("Alerta dismissado"), // Android Only
+        userInterfaceStyle: "light", // IOS Only
+      },
+    );
+  }
+
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.wrapper}>
         <View style={styles.container}>
           <Button onPress={() => setVisible(true)}>Abrir Modal</Button>
+          <Button onPress={handleShowAlert}>Mostrar Alerta</Button>
         </View>
 
         <Modal
           visible={visible}
           animationType="slide"
           statusBarTranslucent
-
-          // Page Sheet -> * IOS Only 
+          // Page Sheet -> * IOS Only
           presentationStyle="pageSheet"
           onRequestClose={() => setVisible(false)}
-          
         >
           <StatusBar barStyle="light-content" animated />
           <View style={styles.modalOverlay}>
