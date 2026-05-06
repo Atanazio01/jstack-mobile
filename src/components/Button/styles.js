@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     overflow: "hidden",
   },
   button: {
-    backgroundColor: "#000",
+    backgroundColor: "#333",
     height: 48,
     alignItems: "center",
     justifyContent: "center",

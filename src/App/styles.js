@@ -23,4 +23,10 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
   },
+  modalContainer: {
+    backgroundColor: "#000",
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });
