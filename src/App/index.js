@@ -1,4 +1,11 @@
-import { View, Modal, Text, StatusBar, Alert } from "react-native";
+import {
+  View,
+  Modal,
+  Text,
+  StatusBar,
+  Alert,
+  ActionSheetIOS,
+} from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { Button } from "../components/Button";
 import { styles } from "./styles";
@@ -42,22 +49,62 @@ export default function App() {
       "Qual o melhor curso da internet?",
       [
         {
-          text: 'Cancelar',
-          style: 'cancel',
-          onPress: (value) => console.log('Cancelado:', value ),
+          text: "Cancelar",
+          style: "cancel",
+          onPress: (value) => console.log("Cancelado:", value),
         },
         {
-          text: 'Enviar',
+          text: "Enviar",
           isPreferred: true,
-          onPress: (value) => console.log('Enviado:', value),
-        }
+          onPress: (value) => console.log("Enviado:", value),
+        },
       ],
-      'plain-text',
-      '',
-      '',
+      "plain-text",
+      "",
+      "",
       {
-        userInterfaceStyle: 'light',
-      }
+        userInterfaceStyle: "light",
+      },
+    );
+  }
+
+  // * IOS Only, quebra no android
+  function handleShowActionSheet() {
+    ActionSheetIOS.showActionSheetWithOptions(
+      {
+        title: "Selecione uma opção",
+        message: "Selecione uma opção para continuar",
+        options: ["Normal", "Destructive", "Cancel", "Disabled"],
+        destructiveButtonIndex: 1,
+        cancelButtonIndex: 2,
+        disabledButtonIndices: [3],
+        userInterfaceStyle: "light",
+        tintColor: "purple",
+        cancelButtonTintColor: "#0f0",
+      },
+      (selectedIndex) => {
+        console.log("Selected index:", selectedIndex);
+      },
+    );
+  }
+
+  // * IOS Only, quebra no android
+  function handleShowShareSheet() {
+    ActionSheetIOS.showShareActionSheetWithOptions(
+      {
+        message: "Compartilhe esta aplicação",
+        url: "https://www.google.com",
+        subject: "Compartilhe esta aplicação",
+        excludedActivityTypes: [
+          "com.apple.UIKit.activity.PostToTwitter",
+          "com.apple.UIKit.activity.PostToFacebook",
+          "com.apple.UIKit.activity.PostToWeibo",
+          "com.apple.UIKit.activity.Message",
+          "com.apple.UIKit.activity.Mail",
+        ],
+      },
+      error => console.log({error}),
+      (success, method) => console.log({success, method}),
     );
   }
 
@@ -68,6 +115,8 @@ export default function App() {
           <Button onPress={() => setVisible(true)}>Abrir Modal</Button>
           <Button onPress={handleShowAlert}>Mostrar Alerta</Button>
           <Button onPress={handleShowPrompt}>Mostrar Prompt</Button>
+          <Button onPress={handleShowActionSheet}>Mostrar Action Sheet</Button>
+          <Button onPress={handleShowShareSheet}>Mostrar ShareActionSheet</Button>
         </View>
 
         <Modal
