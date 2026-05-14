@@ -5,14 +5,16 @@ import {
   StatusBar,
   Alert,
   ActionSheetIOS,
+  useColorScheme,
 } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { Button } from "../components/Button";
 import { styles } from "./styles";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function App() {
   const [visible, setVisible] = useState(false);
+  const theme = useColorScheme();
 
   function handleShowAlert() {
     Alert.alert(
@@ -110,7 +112,7 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
-      <SafeAreaView style={styles.wrapper}>
+      <SafeAreaView style={[styles.wrapper, { backgroundColor: theme === 'dark' ? '#000' : '#fff' }]}>
         <View style={styles.container}>
           <Button onPress={() => setVisible(true)}>Abrir Modal</Button>
           <Button onPress={handleShowAlert}>Mostrar Alerta</Button>
