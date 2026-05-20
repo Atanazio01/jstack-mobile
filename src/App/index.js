@@ -23,7 +23,8 @@ export default function App() {
             }}
             alt="Carro na garagem"
             resizeMode="contain"
-            blurRadius={isBlurred ? 30 : 0} // para adicionar blur na imagem
+            blurRadius={isBlurred ? 20 : 0} // para adicionar blur na imagem
+            defaultSource={require("../images/image-placeholder.png")}
           />
 
           <Button
