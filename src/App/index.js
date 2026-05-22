@@ -1,4 +1,4 @@
-import { Text, useWindowDimensions, View } from "react-native";
+import { PixelRatio, Text, useWindowDimensions, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "./styles";
 
@@ -17,6 +17,20 @@ export default function App() {
             Dimensions: {width}x{height}
           </Text>
           <Text>Orientation: {orientation}</Text>
+
+          <Text>
+            {PixelRatio.get()}
+          </Text>
+          <Text>
+            {PixelRatio.getFontScale()}
+          </Text>
+          <Text>
+            {PixelRatio.getPixelSizeForLayoutSize(100)}
+          </Text>
+          <Text>
+            {/* 8.49px -> 8px  essa função arredonda para o pixel mais próximo, muito usado para fontes e outras coisas que precisam ser arredondadas para o pixel mais próximo*/}
+            {PixelRatio.roundToNearestPixel(8.49)} 
+          </Text>
         </View>
       </SafeAreaView>
     </SafeAreaProvider>
