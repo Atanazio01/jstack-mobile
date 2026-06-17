@@ -1,4 +1,4 @@
-import { ActivityIndicator, View } from "react-native";
+import { ActivityIndicator, Platform, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "./styles";
 
@@ -7,18 +7,19 @@ import { AppText } from "../components/AppText";
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState(null);
+  const [todo, setTodo] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
+      const host = Platform.OS === "android" ? "10.0.2.2" : "localhost";
       const response = await fetch(
-        "https://jsonplaceholder.typicode.com/todos/1",
+        `http://${host}:3001/todos/1`,
       );
-      const json = await response.json();
+      const todoObject = await response.json();
 
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      setData(json);
+      setTodo(todoObject);
       setIsLoading(false);
     }
     fetchData();
@@ -31,7 +32,7 @@ export default function App() {
           {isLoading ? (
             <ActivityIndicator />
           ) : (
-            <AppText style={{ fontSize: 32 }}>{data.title}</AppText>
+            <AppText style={{ fontSize: 32 }}>{todo.title}</AppText>
           )}
         </View>
       </SafeAreaView>
