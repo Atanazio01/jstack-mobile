@@ -1,1 +1,17 @@
-{}
+{
+  "files.exclude": {
+    "**/node_modules/**/windows": true,
+    "**/node_modules/**/*.sln": true
+  },
+  "search.exclude": {
+    "**/node_modules": true
+  },
+  "files.watcherExclude": {
+    "**/node_modules/**": true
+  },
+  "dotnet.defaultSolution": "disable",
+  "dotnet.autoDetect": "off",
+  "dotnet.projectOrSolutionFileSearchExcludePatterns": [
+    "**/node_modules/**"
+  ]
+}

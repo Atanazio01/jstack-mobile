@@ -1,0 +1,2 @@
+﻿node_modules/**/windows/
+node_modules/**/*.sln
